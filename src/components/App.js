@@ -1,13 +1,18 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import Web3 from 'web3';
+import Identicon from 'identicon.js';
+import './App.css';
+import Decentragram from '../abis/Decentragram.json'
 import Navbar from './Navbar'
-import './App.css'
+import Main from './Main'
+
 
 class App extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      account: '0x0'
+      account: '',
     }
   }
 
@@ -15,23 +20,13 @@ class App extends Component {
     return (
       <div>
         <Navbar account={this.state.account} />
-        <div className="container-fluid mt-5">
-          <div className="row">
-            <main role="main" className="col-lg-12 ml-auto mr-auto" style={{ maxWidth: '600px' }}>
-              <div className="content mr-auto ml-auto">
-                <a
-                  href="http://www.dappuniversity.com/bootcamp"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                </a>
-
-                <h1>Hello, World!</h1>
-
-              </div>
-            </main>
-          </div>
-        </div>
+        { this.state.loading
+          ? <div id="loader" className="text-center mt-5"><p>Loading...</p></div>
+          : <Main
+            // Code...
+            />
+          }
+        }
       </div>
     );
   }
